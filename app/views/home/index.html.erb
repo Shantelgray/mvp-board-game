@@ -1,0 +1,23 @@
+<h1>Home#index</h1>
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+
+<% if user_signed_in? %>
+  <h2>Welcome, <%= current_user.email %>!</h2>
+  <%= link_to "Logout", destroy_user_session_path, data: { turbo_method: :delete } %>
+<% else %>
+  <h2>Sign Up</h2>
+  <%= form_for(User.new, url: user_registration_path) do |f| %>
+    <%= f.email_field :email, placeholder: "Email", autofocus: true %>
+    <%= f.password_field :password, placeholder: "Password" %>
+    <%= f.password_field :password_confirmation, placeholder: "Confirm Password" %>
+    <%= f.submit "Sign Up" %>
+  <% end %>
+
+  <h2>Login</h2>
+  <%= form_for(User.new, url: user_session_path) do |f| %>
+    <%= f.email_field :email, placeholder: "Email", autofocus: true %>
+    <%= f.password_field :password, placeholder: "Password" %>
+    <%= f.submit "Login" %>
+  <% end %>
+<% end %>
