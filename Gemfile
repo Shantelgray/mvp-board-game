@@ -62,6 +62,7 @@ group :test do
   gem "selenium-webdriver"
   gem "rspec"
   gem "rspec-rails", "~> 8.0"
+  gem "shoulda-matchers", "~> 5.0"
 end
 
 gem "devise", "~> 4.9"
