@@ -8,4 +8,12 @@ class User < ApplicationRecord
 
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true
+
+  def total_points
+    scores.sum(:points)
+  end
+
+  def top_game
+    scores.order(points: :desc).first&.game
+  end
 end

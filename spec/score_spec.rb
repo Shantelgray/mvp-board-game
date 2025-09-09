@@ -22,4 +22,17 @@
       expect(Score.low_scores).not_to include(high_score)
      end
    end
- end
+
+   describe "#top_score" do
+    it "returns the score with the highest points" do
+    expect(Score.top_score).to eq(high_score)
+    end
+   end
+
+  describe "validations" do
+   it "is valid with zero points" do
+    score = Score.new(points: 0, user: user, game: game)
+    expect(score).to be_valid
+  end
+  end
+end

@@ -5,4 +5,8 @@ class Score < ApplicationRecord
 
   scope :high_scores, -> { where("points > 100") }
   scope :low_scores, -> { where("points <= 100") }
+
+  def self.top_score
+    order(points: :desc).first
+  end
 end

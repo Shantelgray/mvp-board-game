@@ -11,4 +11,8 @@ class Game < ApplicationRecord
   def top_user_score
     top_score&.user
   end
+
+  def games_played
+    scores.includes(:game).map { |score| { game: score.game.name, points: score.points } }
+  end
 end
