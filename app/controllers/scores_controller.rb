@@ -1,6 +1,6 @@
 class ScoresController < ApplicationController
   before_action :set_game
-  before_action :set_score, only: [ :show, :edit, :update ]
+  before_action :set_score, only: [ :show]
 
   def index
     @scores = @game.scores
@@ -20,17 +20,6 @@ class ScoresController < ApplicationController
       redirect_to game_score_path(@game, @score), notice: "Score created successfully."
     else
       render :new
-    end
-  end
-
-  def edit
-  end
-
-  def update
-    if @score.update(score_params)
-      redirect_to game_score_path(@game, @score), notice: "Score updated successfully."
-    else
-      render :edit
     end
   end
 

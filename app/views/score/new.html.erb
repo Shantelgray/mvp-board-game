@@ -1,6 +1,17 @@
-<h1>New Score</h1>
+<h1>Score</h1>
 
-  <%= form_with (model:[@game, @score]) do |f| %>
+<%= form_with(model: [@game, @score]) do |f| %>
+  <% if @score.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@score.errors.count, "error") %> prevented this score from being saved:</h2>
+      <ul>
+        <% @score.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <div>
     <%= f.label :points, "Points" %>
     <%= f.number_field :points %>
@@ -12,11 +23,6 @@
   </div>
 
   <div>
-    <%= f.label :game%>
-    <%= f.collection_select  :game_id, Game.all, :id, :name %>
-  </div>
-
-  <div>
     <%= f.submit "Submit Score"%>
   </div>
-  <% end %>
+<% end %>

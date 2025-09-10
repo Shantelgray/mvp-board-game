@@ -1,0 +1,7 @@
+<h1>Score Details</h1>
+
+<p><strong>Points:</strong> <%= @score.points %></p>
+<p><strong>Round:</strong> <%= @score.round_number %></p>
+<p><strong>Player:</strong> <%= @score.user.name %></p>
+
+<%= link_to "Back to Scores", game_scores_path(@game) %>
