@@ -1,16 +1,15 @@
 class GamesController < ApplicationController
   def index
+    @games = Game.all
   end
 
   def show
+    @game = Game.find(params[:id])
   end
 
-  def new
-  end
+  private
 
-  def create
-  end
-
-  def destroy
+  def game_params
+    params.require(:games).permit(:name, :genre)
   end
 end
