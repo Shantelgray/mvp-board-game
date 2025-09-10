@@ -1,9 +1,0 @@
-<h1>Game Details</h1>
-
-<p><strong>Name:</strong> <%= @game.name %></p>
-<p><strong>Genre:</strong> <%= @game.genre %></p>
-
-<p>
-  <%= link_to "Add New Score", new_game_score_path(@game) %>
-  <%= link_to "View Scores", game_scores_path(@game) %>
-</p>

@@ -1,9 +1,0 @@
-<h1>All Games</h1>
-
-<% @games.each do |game| %>
-  <p>
-    <strong>Name:</strong> <%= game.name %> |
-    <strong>Genre:</strong> <%= game.genre %> |
-    <%= link_to "View Details", game_path(game) %>
-  </p>
-<% end %>

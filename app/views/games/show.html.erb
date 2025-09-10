@@ -1,0 +1,19 @@
+<h1>Game Details</h1>
+
+<p><strong>Name:</strong> <%= @game.name %></p>
+<p><strong>Genre:</strong> <%= @game.genre %></p>
+
+<% if @game.name == "Connect Four" %>
+  <iframe src="https://www.calculators.org/games/connect-4/" width="600" height="400" frameborder="0" allowfullscreen></iframe>
+<% elsif @game.name == "Candy Land" %>
+  <iframe src="https://www.gameflare.com/embed/candy-land/" width="850" height="515" frameborder="0" scrolling="no" allowfullscreen></iframe>
+<% elsif @game.name == "Monopoly" %>
+  <iframe src="https://www.gameflare.com/embed/monopoly-online/" width="850" height="515" frameborder="0" scrolling="no" allowfullscreen></iframe>
+<% else %>
+  <p>No embedded game available for this game.</p>
+<% end %>
+
+<p>
+  <%= link_to "Add New Score", new_game_score_path(@game) %>
+  <%= link_to "View Scores", game_scores_path(@game) %>
+</p>
