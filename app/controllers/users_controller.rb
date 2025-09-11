@@ -11,6 +11,11 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def edit
+    # verify that user you're editing is current user
+    # if not, redirect to show or index page for users
+  end
+
   def create
     @user = user.new(sweet_params)
     if @user.save
@@ -20,6 +25,9 @@ class UsersController < ApplicationController
     end
   end
 
+  def update
+    # TODO
+  end
 
   private
 

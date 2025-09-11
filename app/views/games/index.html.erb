@@ -3,9 +3,9 @@
 <% @games.each do |game| %>
 
   <br>
-  <strong>Name:</strong> 
+  <strong>Name:</strong>
   <li><%= game.name %></li>
-   |
+  |
   <strong>Genre:</strong> <%= game.genre %> |
   <%= link_to "View Details", game_path(game) %>
   <br>

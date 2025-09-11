@@ -6,6 +6,7 @@
 
 <% @scores.each do |score| %>
   <p>
+    <strong>Game:</strong> <%=link_to score.game.name, game_path(score.game) %>
     <strong>Points:</strong> <%= score.points %> |
     <strong>Round:</strong> <%= score.round_number %> |
     <strong>Player:</strong> <%= score.user.name %> |
