@@ -3,12 +3,17 @@
 <p><strong>Name:</strong> <%= @game.name %></p>
 <p><strong>Genre:</strong> <%= @game.genre %></p>
 
-<% if @game.name == "Connect Four" %>
+<% case @game.name %>
+<% when "Connect Four" %>
   <iframe src="https://www.calculators.org/games/connect-4/" width="600" height="400" frameborder="0" allowfullscreen></iframe>
-<% elsif @game.name == "Candy Land" %>
-  <iframe src="https://www.gameflare.com/embed/candy-land/" width="850" height="515" frameborder="0" scrolling="no" allowfullscreen></iframe>
-<% elsif @game.name == "Monopoly" %>
+<% when "Monopoly" %>
   <iframe src="https://www.gameflare.com/embed/monopoly-online/" width="850" height="515" frameborder="0" scrolling="no" allowfullscreen></iframe>
+<% when "Battleship" %>
+  <iframe src="https://www.calculators.org/games/battleship/" width="850" height="515" frameborder="0" scrolling="no" allowfullscreen></iframe>
+<% when "Uno" %>
+  <iframe src="https://www.gameflare.com/embed/uno/" width="754" height="635" frameborder="0" scrolling="no" allowfullscreen></iframe>
+<% when "Scrabble" %>
+  <iframe src="https://www.retrogames.cc/embed/40030-scrabble.html" width="600" height="450" frameborder="0" allowfullscreen></iframe>
 <% else %>
   <p>No embedded game available for this game.</p>
 <% end %>

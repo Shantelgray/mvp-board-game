@@ -1,23 +1,31 @@
 class ScoresController < ApplicationController
   before_action :set_game
-  before_action :set_score, only: [ :show]
+  before_action :set_score, only: [:show], if: -> { params[:game_id].present? }
 
   def index
-    @scores = @game.scores
-  end
-
-  def new
-     @score = @game.scores.build
+    if params[:user_id]
+      @user = User.find(params[:user_id])
+      @scores = @user.scores
+    elsif params[:game_id]
+      @game = Game.find(params[:game_id])
+      @scores = @game.scores
+    else
+      @scores = Score.all
+    end
   end
 
   def show
   end
 
+  def new
+    @score = @game.scores.build
+  end
+
   def create
-     @score = @game.scores.build(score_params)
-     @score.user = current_user
+    @score = @game.scores.build(score_params)
+    @score.user = current_user
     if @score.save
-      redirect_to game_score_path(@game, @score), notice: "Score created successfully."
+      redirect_to game_score_path(@game), notice: "Score created successfully."
     else
       render :new
     end
@@ -26,6 +34,8 @@ class ScoresController < ApplicationController
   private
 
   def set_game
+    return unless params[:game_id]
+
     @game = Game.find(params[:game_id])
   end
 

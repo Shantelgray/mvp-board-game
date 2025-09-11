@@ -1,14 +1,20 @@
-<h1>Scores for <%= @game.name %></h1>
+<% if @game %>
+  <h1>Scores for <%= @game.name %></h1>
+<%else %>
+  <h2> All Score </h2>
+<%end%>
 
 <% @scores.each do |score| %>
   <p>
     <strong>Points:</strong> <%= score.points %> |
     <strong>Round:</strong> <%= score.round_number %> |
     <strong>Player:</strong> <%= score.user.name %> |
-    <%= link_to "View", game_score_path(@game, score) %>
+    <%= link_to "View", game_score_path(score.game, score) if score.game %>
   </p>
 <% end %>
 
-<p>
-  <%= link_to "Add New Score", new_game_score_path(@game) %>
-</p>
+<% if @game %>
+  <p>
+    <%= link_to "Add New Score", new_game_score_path(@game) %>
+  </p>
+<% end %>

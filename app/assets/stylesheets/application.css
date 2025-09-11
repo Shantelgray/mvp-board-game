@@ -8,3 +8,46 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+<style>
+  /* Navbar background and full width */
+  .navbar {
+    width: 100%;
+    background-color: #333;
+    padding: 10px 20px;
+    color: black; /* make text visible */
+  }
+
+  /* Flex container for links */
+  .navbar-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* spreads items from left */
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Each link item */
+  .navbar-links li {
+    margin-right: 15px;
+  }
+
+  /* Links style */
+  .navbar a {
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  /* Hover effect */
+  .navbar a:hover {
+    text-decoration: underline;
+  }
+
+  /* Optional welcome message style */
+  .welcome {
+    margin-left: 20px;
+    font-style: italic;
+    color: black;
+  }
+</style>
