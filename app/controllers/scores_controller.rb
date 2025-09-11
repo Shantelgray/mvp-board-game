@@ -14,8 +14,7 @@ class ScoresController < ApplicationController
     end
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @score = @game.scores.build
@@ -44,6 +43,6 @@ class ScoresController < ApplicationController
   end
 
   def score_params
-    params.require(:score).permit(:points, :round_number)
+    params.expect(score: %i[points round_number])
   end
 end

@@ -10,6 +10,6 @@ class GamesController < ApplicationController
   private
 
   def game_params
-    params.require(:game).permit(:name, :genre)
+    params.expect(game: %i[name genre])
   end
 end

@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-    redirect_to root_path, alert: "Not authorized" unless @user == current_user
+    redirect_to users_path, alert: "Not authorized" unless @user == current_user
   end
 
   def create
@@ -27,20 +27,18 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user == current_user
-      if @user.update(user_params)
-        redirect_to @user, notice: "Profile updated successfully"
-      else
-        render :edit
-      end
-    else
+    if @user != current_user
       redirect_to root_path, alert: "Not authorized"
+    elsif @user.update(user_params)
+      redirect_to @user, notice: "Profile updated successfully"
+    else
+      render :edit
     end
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:name, :email)
+    params.expect(user: %i[name email password])
   end
 end

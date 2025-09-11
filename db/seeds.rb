@@ -35,5 +35,5 @@ Score.create!([
                 { points: 180, round_number: 2, user: users[2], game: games[4] }
               ])
 
-puts "Seeding done!"
-puts "Users: #{User.count}, Games: #{Game.count}, Scores: #{Score.count}"
+Rails.logger.debug "Seeding done!"
+Rails.logger.debug { "Users: #{User.count}, Games: #{Game.count}, Scores: #{Score.count}" }
