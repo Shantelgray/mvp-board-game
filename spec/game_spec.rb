@@ -8,7 +8,6 @@ RSpec.describe Game, type: :model do
   let!(:score2) { FactoryBot.create(:score, points: 140, user: user2, game: game) }
   let!(:score3) { FactoryBot.create(:score, points: 140, user: user1, game: game) }
 
-  # Associations and validations
   it { is_expected.to have_many(:scores) }
   it { is_expected.to validate_presence_of(:name) }
   it { is_expected.to validate_presence_of(:genre) }

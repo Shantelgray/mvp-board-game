@@ -49,7 +49,6 @@ RSpec.describe "Scores", type: :request do
         expect do
           post game_scores_path(game), params: { score: { points: 250, round_number: 3 } }
         end.to change(Score, :count).by(1)
-
         expect(response).to redirect_to(game_score_path(game, Score.last))
         follow_redirect!
         expect(response.body).to include("250")
@@ -61,7 +60,6 @@ RSpec.describe "Scores", type: :request do
         expect do
           post game_scores_path(game), params: { score: { points: nil, round_number: 3 } }
         end.not_to change(Score, :count)
-
         expect(response).to have_http_status(:ok)
         expect(response.body).to include("error")
       end

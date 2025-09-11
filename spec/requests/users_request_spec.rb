@@ -31,12 +31,12 @@ RSpec.describe "Users", type: :request do
       expect(response.body).to include(user.email)
     end
 
-    # it "shows the user's total points" do
-    #   FactoryBot.create(:score, user: user, points: 100)
-    #   FactoryBot.create(:score, user: user, points: 150)
-    #   get user_path(user)
-    #   expect(response.body).to include("Total Points: 250")
-    # end
+    it "shows the user's total points" do
+      FactoryBot.create(:score, user: user, points: 100)
+      FactoryBot.create(:score, user: user, points: 150)
+      get user_path(user)
+      expect(response.body).to include("Total Points: 250")
+    end
 
     it "shows the user's top game" do
       game = FactoryBot.create(:game, name: "Top Game")

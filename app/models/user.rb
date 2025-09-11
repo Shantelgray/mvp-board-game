@@ -16,4 +16,8 @@ class User < ApplicationRecord
   def top_game
     scores.order(points: :desc).first&.game
   end
+
+  def total_points
+    scores.sum(:points)
+  end
 end

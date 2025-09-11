@@ -1,6 +1,8 @@
 <h1><%= @user.name %>'s Profile</h1>
 <p><strong>Email:</strong> <%= @user.email %></p>
 
+<h3>Total Points: <%= @user.scores.sum(:points) %></h3>
+
 <h2>Scores:</h2>
 <% @user.scores.each do |score| %>
   <p>
