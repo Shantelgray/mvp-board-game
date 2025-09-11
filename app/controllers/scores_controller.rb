@@ -25,7 +25,7 @@ class ScoresController < ApplicationController
     @score = @game.scores.build(score_params)
     @score.user = current_user
     if @score.save
-      redirect_to game_score_path(@game), notice: "Score created successfully."
+      redirect_to game_score_path(@game, @score), notice: "Score created successfully."
     else
       render :new
     end
