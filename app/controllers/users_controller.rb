@@ -12,12 +12,12 @@ class UsersController < ApplicationController
   end
 
   def edit
-    # verify that user you're editing is current user
-    # if not, redirect to show or index page for users
+    @user = User.find(params[:id])
+    redirect_to root_path, alert: "Not authorized" unless @user == current_user
   end
 
   def create
-    @user = user.new(sweet_params)
+    @user = user.new(user_params)
     if @user.save
       redirect_to @user
     else
@@ -26,7 +26,16 @@ class UsersController < ApplicationController
   end
 
   def update
-    # TODO
+    @user = User.find(params[:id])
+    if @user == current_user
+      if @user.update(user_params)
+        redirect_to @user, notice: "Profile updated successfully"
+      else
+        render :edit
+      end
+    else
+      redirect_to root_path, alert: "Not authorized"
+    end
   end
 
   private

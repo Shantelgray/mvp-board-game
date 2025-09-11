@@ -5,5 +5,13 @@
     <strong>Name:</strong> <%= user.name %> |
     <strong>Email:</strong> <%= user.email %> |
     <%= link_to "View Details", user_path(user) %>
+
+    <br>
+    <% if current_user == user %>
+      <br>
+      <%= link_to "Edit Profile", edit_user_path(user) %>
+      <br>
+
+    <% end %>
   </p>
 <% end %>
