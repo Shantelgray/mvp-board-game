@@ -1,1 +1,40 @@
-# See https://www.robotstxt.org/robotstxt.html for documentation on how to use the robots.txt file
+ Requirements
+
+This project was built to meet the following requirements:
+
+## Models
+- **User**
+  - Uses Devise for authentication
+  - Can only edit their own profile
+- **Game**
+  - Has many scores
+- **Score**
+  - Belongs to a game
+  - Belongs to a user
+
+## Features
+- User authentication (sign up, login, logout)
+- Users can view all users but only edit their own profile
+- Games can be created and associated with scores
+- Scores track user performance per game
+
+## Routes
+- Users: index, show, edit, update (restricted by current_user)
+- Games: index, show, new, create
+- Scores: nested under games
+
+## Validations
+- User must have a name and email
+- Games must have a title
+- Scores must have valid associations with user and game
+
+## Testing
+- Unit tests for all models
+- At least one integration (controller/request/system) test
+
+## Tech Stack
+- Ruby 3.3.5
+- Rails 7
+- PostgreSQL (or SQLite in development)
+- Devise for authentication
+- RSpec for testing
