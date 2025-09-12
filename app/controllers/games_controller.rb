@@ -6,10 +6,4 @@ class GamesController < ApplicationController
   def show
     @game = Game.find(params[:id])
   end
-
-  private
-
-  def game_params
-    params.expect(game: %i[name genre])
-  end
 end
