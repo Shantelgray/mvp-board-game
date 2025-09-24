@@ -11,4 +11,10 @@ RSpec.describe ScoreComponent, type: :component do
     expect(page).to have_text("Points")
     expect(page).to have_text("Round")
   end
+
+  it "valid names" do
+    render_inline(described_class.new(score: score, game: score.game))
+
+    expect(page).to have_text("User")
+  end
 end
