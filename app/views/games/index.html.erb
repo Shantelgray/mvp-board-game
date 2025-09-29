@@ -1,11 +1,9 @@
-<div classname="game-header">
+<div class="game-header">
   <h1>All Games</h1>
 
   <div data-controller="game-select">
-    <%= select_tag :game_id,
-        options_from_collection_for_select(Game.all, :id, :name, @game&.id),
-        prompt: "Filter by Game",
-        data: { action: "change->game-select#selectGame" } %>
+    <%= collection_select :game, :id, Game.all, :id, :name,
+          { data: { action: "change->game-select#selectGame" } } %>
   </div>
 </div>
 
