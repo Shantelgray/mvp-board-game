@@ -1,13 +1,22 @@
-<h1>All Games</h1>
+<div class="game-header">
+  <h1>All Games</h1>
+
+  <div data-controller="game-select">
+    <%= collection_select :game, :id, Game.all, :id, :name,
+          { data: { action: "change->game-select#selectGame" } } %>
+  </div>
+</div>
 
 <% @games.each do |game| %>
 
   <br>
   <strong>Name:</strong>
   <li><%= game.name %></li>
-   |
+  |
   <strong>Genre:</strong> <%= game.genre %> |
   <%= link_to "View Details", game_path(game) %>
   <br>
 
 <% end %>
+<div>
+  <input data-container="click->">

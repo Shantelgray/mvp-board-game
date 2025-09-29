@@ -1,0 +1,8 @@
+<div>Add Score template here</div>
+<p>
+  <strong>Game:</strong> <%=link_to score.game.name, game_path(score.game) %>
+  <strong>Points:</strong> <%= score.points %> |
+  <strong>Round:</strong> <%= score.round_number %> |
+  <strong>Player:</strong> <%= score.user.name %> |
+  <%= link_to "View", game_score_path(score.game, score) if score.game %>
+</p>
