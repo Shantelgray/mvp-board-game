@@ -65,7 +65,7 @@ group :test do
   gem "rubocop-rails"
   gem "rubocop-rspec"
   gem "selenium-webdriver"
-  gem "shoulda-matchers", "~> 5.0"
+  gem "shoulda-matchers", "~> 6.5"
 end
 
 gem "devise", "~> 4.9"
